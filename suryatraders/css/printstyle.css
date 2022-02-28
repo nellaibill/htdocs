@@ -1,0 +1,8 @@
+@CHARSET "ISO-8859-1";
+tr.noBorder td {
+	border: 0;
+}
+.fontlow { 
+ font-size:8px;
+ font-family:Arial;
+}
