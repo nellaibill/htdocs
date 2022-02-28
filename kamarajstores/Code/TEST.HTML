@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+    </script>
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+	 function afocus() {
+			var xLength = document.getElementById("f_paper2_plustwo").value.length;
+			if(xLength>=1)
+			{
+			document.getElementById("f_paper2_degree").focus();
+			}
+			}
+				 function bfocus() {
+			var xLength = document.getElementById("f_paper2_diploma").value.length;
+			if(xLength>=1)
+			{
+			document.getElementById("f_paper2_tet").focus();
+			}
+				 }
+				 
+				 function cfocus() {
+			var xLength = document.getElementById("f_paper2_tet").value.length;
+			if(xLength>=1)
+			{
+			document.getElementById("total").focus();
+			}
+				 }
+      function calculate_twelth(){
+        var xpaper2_PlusTwo = parseInt(document.getElementById("f_paper2_plustwo").value);
+        document.getElementById("f_paper2_plustwo_cutoff").value =(xpaper2_PlusTwo*15)/100;
+      }
+      function calculate_diploma(){
+        var xpaper2_DiplomaTwo = parseInt(document.getElementById("f_paper2_diploma").value);
+  document.getElementById("f_paper2_diploma_cutoff").value =(xpaper2_DiplomaTwo*25)/100;
+      }
+      function calculate_tet(){
+        var xpaper2_Tet = parseInt(document.getElementById("f_paper2_tet").value);
+        document.getElementById("f_paper2_tet_cutoff").value= (xpaper2_Tet*60)/100;
+      }
+	   function calculate_total(){
+        var a = parseFloat(document.getElementById("f_paper2_plustwo_cutoff").value);
+		var b = parseFloat(document.getElementById("f_paper2_diploma_cutoff").value);
+		var c = parseFloat(document.getElementById("f_paper2_tet_cutoff").value);
+				var d=a+b+c;
+		document.getElementById("total").value =d;
+      }
+    </script>
+  </head>
+  <body>
+    <form class="form" name="unitform"
+          action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+      <div class="panel panel-success">
+        <div class="panel-heading text-center">PAPER-1 WEIGHTAGE
+        </div> 
+        <div class="panel-body">
+          <div class="form-group">
+            <div class="container">
+
+			  
+              <div class="row" >
+                <div class="col-xs-12">
+                  <label>Plus Two  Mark %
+                  </label> 
+                </div></div>
+				  <div class="row" >
+                <div class="col-xs-5">
+                  <input type="number" class="form-control" id="f_paper2_plustwo" onkeypress="afocus()" onBlur="calculate_twelth()"/>
+                </div>
+                <div class="col-xs-2">
+                  <label>10
+                  </label> 
+                </div>
+                <div class="col-xs-5">
+                  <input type="number" class="form-control" id="f_paper2_plustwo_cutoff" />
+                </div>
+              </div>									
+              </br>
+            <div class="row" >
+                <div class="col-xs-12">
+                  <label>Degree  Mark %
+                  </label> 
+                </div></div>
+				  <div class="row" >
+                <div class="col-xs-5">
+                <input type="number" class="form-control" id="f_paper2_degree" onkeypress="bfocus()" onBlur="calculate_diploma()"/>
+              </div>
+              <div class="col-xs-2">                  
+                <label>15
+                </label> 
+              </div>
+              <div class="col-xs-5">
+                <input type="number" class="form-control" id="f_paper2_degree_cutoff" />
+              </div>
+            </div>	
+</br>	
+
+		 <div class="row" >
+                <div class="col-xs-12">
+                  <label>B.E.D  Mark %
+                  </label> 
+                </div></div>
+				  <div class="row" >
+                <div class="col-xs-5">
+                <input type="number" class="form-control" id="f_paper2_bed" onkeypress="bfocus()" onBlur="calculate_diploma()"/>
+              </div>
+              <div class="col-xs-2">                  
+                <label>15
+                </label> 
+              </div>
+              <div class="col-xs-5">
+                <input type="number" class="form-control" id="f_paper2_bed_cutoff" />
+              </div>
+            </div>	
+</br>	
+
+   	
+    <div class="row" >
+                <div class="col-xs-12">
+                  <label>TET Mark %
+                  </label> 
+                </div></div>
+				  <div class="row" >
+                <div class="col-xs-5">
+                 <input type="number" class="form-control" id="f_paper2_tet" onkeypress="cfocus()" onBlur="calculate_tet()"/>
+              </div>
+              <div class="col-xs-2">                  
+                <label>60
+                </label> 
+              </div>
+              <div class="col-xs-5">
+                <input type="number" class="form-control" id="f_paper2_tet_cutoff"  />
+              </div>
+            </div>									
+</br>							
+</br>
+    <button type="button" class="btn  btn-large btn-block btn-success" onclick="calculate_total()">CALCULATE</button>
+        </div>
+
+
+        <!-- Form-Group !-->
+      </div>
+      <!-- Panel Body !-->
+      </div>
+    <!-- Panel !-->
+   
+      <H1>TOTAL WEIGHTAGE  <center><input type="text" id="total">
+        </center>
+      <!-- Panel -Room Type Number Information Ended !-->
+      </div>
+    </form>
