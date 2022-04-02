@@ -1,0 +1,4 @@
+UPDATE inv_stockentry t1 
+        INNER JOIN m_openingstock t2 
+             ON t1.itemno = t2.itemno
+SET t1.mrp = t2.mrp

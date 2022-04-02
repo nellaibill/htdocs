@@ -1,0 +1,49 @@
+/*body {
+	background-color: #f4f4f4;
+	padding-top: 05px;
+}
+
+.container {
+	border: 1px #e4e4e4 solid;
+	padding: 20px;
+	border-radius: 4px;
+	box-shadow: 0 0 6px #ccc;
+	background-color: #fff;
+}
+
+h2 {
+	font: normal normal normal 20px/1 Helvetica, arial, sans-serif;
+	text-shadow: rgba(255,255,255,.1) -1px -1px 1px,rgba(0,0,0,.5) 1px 1px 1px;
+}
+
+h2:first-line {
+	background: green;
+	color: #fff;
+}
+
+/* Tab Navigation */
+.nav-tabs {
+	margin: 10px;
+	padding:5px; 
+	background-color: green;
+}
+
+.nav-tabs>li>a {
+	padding-left:10px;
+	background: white;
+	color: red;
+	font-weight: bold;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover {
+	background: white;
+	border-radius: 25px;
+}
+
+/* Tab Content */
+.tab-pane {
+	background: #F5F5F5;
+	box-shadow: 0 0 4px rgba(0, 0, 0, .4);
+	border-radius: 0;
+	text-align: left;
+}
