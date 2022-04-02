@@ -9,9 +9,13 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 $donor_name = $_POST['donor_name'];
 $address_line1 = $_POST['address_line1'];
 $address_line2 = $_POST['address_line2'];
-$phone_no = $_POST['phone_no'];
+$phone_no1 = $_POST['phone_no1'];
+$phone_no2 = $_POST['phone_no2'];
 $donor_file_name = $_POST['donor_file_name'];
-$email_id = $_POST['email_id'];
+$email_id1 = $_POST['email_id1'];
+$email_id2 = $_POST['email_id2'];
+$landline_no1 = $_POST['landline_no1'];
+$landline_no2 = $_POST['landline_no2'];
 $reference = $_POST['reference'];
 $related_files = $_POST['related_files'];
 $donor_annual = $_POST['donor_annual'];
@@ -32,7 +36,8 @@ $sr_email  = $_POST['sr_email'];
 
 $sql = "INSERT INTO `lukes_donor_registration` (
     donor_name,address_line1,address_line2,
-    phone_no,donor_file_name,email_id,
+    phone_no1,phone_no2,landline_no1,landline_no2,
+    donor_file_name,email_id1,email_id2,
     reference,related_files,
     donor_annual,donor_fd,donor_things,donor_welfare,
     support_cs,support_fs,support_bs,support_cloth,support_other,
@@ -40,7 +45,8 @@ $sql = "INSERT INTO `lukes_donor_registration` (
     ) 
 VALUES ( 
     '$donor_name','$address_line1','$address_line2',
-    '$phone_no','$donor_file_name','$email_id',
+    '$phone_no1','$phone_no2','$landline_no1','$landline_no2',
+    '$donor_file_name','$email_id1','$email_id2',
     '$reference','$related_files',
     '$donor_annual','$donor_fd','$donor_things','$donor_welfare',
     '$support_cs','$support_fs','$support_bs','$support_cloth','$support_other',

@@ -1,0 +1,4 @@
+[13-Apr-2021 02:08:57 UTC] PHP Fatal error:  Call to a member function execute() on boolean in /home/donbookart/public_html/donneetjee.com/data_entry/api/rest_api/class/Candidates.php on line 25
+[13-Apr-2021 02:10:42 UTC] PHP Fatal error:  Call to undefined method mysqli_stmt::get_result() in /home/donbookart/public_html/donneetjee.com/data_entry/api/rest_api/class/Candidates.php on line 26
+[13-Apr-2021 02:10:44 UTC] PHP Fatal error:  Call to undefined method mysqli_stmt::get_result() in /home/donbookart/public_html/donneetjee.com/data_entry/api/rest_api/class/Candidates.php on line 26
+[13-Apr-2021 02:10:49 UTC] PHP Fatal error:  Call to undefined method mysqli_stmt::get_result() in /home/donbookart/public_html/donneetjee.com/data_entry/api/rest_api/class/Candidates.php on line 26

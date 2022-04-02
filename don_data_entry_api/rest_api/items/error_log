@@ -1,0 +1,6 @@
+[13-Apr-2021 02:12:40 UTC] PHP Fatal error:  Call to undefined method mysqli_stmt::get_result() in /home/donbookart/public_html/donneetjee.com/data_entry/api/rest_api/class/Items.php on line 26
+[13-Apr-2021 02:13:39 UTC] PHP Fatal error:  Call to undefined method mysqli_stmt::get_result() in /home/donbookart/public_html/donneetjee.com/data_entry/api/rest_api/class/Items.php on line 26
+[13-Apr-2021 02:15:59 UTC] PHP Fatal error:  Call to undefined method mysqli_stmt::get_result() in /home/donbookart/public_html/donneetjee.com/data_entry/api/rest_api/class/Items.php on line 26
+[13-Apr-2021 02:16:53 UTC] PHP Fatal error:  Call to undefined method mysqli_stmt::get_result() in /home/donbookart/public_html/donneetjee.com/data_entry/api/rest_api/class/Items.php on line 26
+[13-Apr-2021 02:17:00 UTC] PHP Fatal error:  Call to undefined method mysqli_stmt::get_result() in /home/donbookart/public_html/donneetjee.com/data_entry/api/rest_api/class/Items.php on line 26
+[20-Apr-2021 05:16:30 UTC] PHP Fatal error:  Call to undefined method mysqli_stmt::get_result() in /home/donbookart/public_html/donneetjee.com/data_entry/api/rest_api/class/Items.php on line 26
