@@ -37,8 +37,9 @@ $GLOBALS ['xItemName']='';
 						name="f_itemno">
 						<option value="0">Choose Item</option>
 <?php
-$result = mysql_query ( "SELECT *  FROM m_item as i order by i.itemname" );
-while ( $row = mysql_fetch_array ( $result ) ) {
+global $con;
+$result = mysqli_query ( $con, "SELECT *  FROM m_item as i order by i.itemname" );
+while ( $row = mysqli_fetch_array ( $result ) ) {
 	?>
 <option value="<?php echo $row['itemname']; ?>"
 							<?php
@@ -87,7 +88,7 @@ $xTotalAmount=0;
 
 $xQry="SELECT *  from inv_sales where date>= '$xFromDate' AND date<= '$xToDate'"; 
 //echo $xQry;
-$result2=mysql_query($xQry);
+$result2=mysqli_query($con, $xQry);
     
 ?>
 <div class="panel panel-info">
@@ -113,8 +114,8 @@ $result2=mysql_query($xQry);
 
 <?php
 $xQty=0;
-if(mysql_num_rows($result2)){
-while ($row = mysql_fetch_array($result2)) {
+if(mysqli_num_rows($result2)){
+while ($row = mysqli_fetch_array($result2)) {
 ?>
 <tr>
 <?php 
@@ -173,4 +174,4 @@ else
     </table>	
   </div><!-- /container -->
 </div></div>
-</body></html>	
+</body></html>

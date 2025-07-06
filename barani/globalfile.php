@@ -3,8 +3,9 @@ require_once 'config.php';
 require_once 'session.php';
 $GLOBALS ['xMode']='';
 function findcustomername($xNo) {
-	$result = mysql_query ( "SELECT *  FROM inv_customer where customerno=$xNo" ) or die ( mysql_error () );
-	while ( $row = mysql_fetch_array ( $result ) ) {
+	global $con;
+	$result = mysqli_query ( $con, "SELECT *  FROM inv_customer where customerno=$xNo" ) or die ( mysqli_error ( $con ) );
+	while ( $row = mysqli_fetch_array ( $result ) ) {
 		$GLOBALS ['xCustomerName'] = $row ['customername'];
 		$GLOBALS ['xCustomerAddress'] = $row ['customeraddress'];
 		$GLOBALS ['xCustomerMobileNo'] = $row ['customermobileno'];

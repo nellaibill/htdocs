@@ -7,8 +7,9 @@ if (isset ( $_GET ['itemno'] ) && ! empty ( $_GET ['itemno'] )) {
 		$GLOBALS ['xMode'] = 'F';
 		DataFetch ( $_GET ['itemno'] );
 	} else {
+		global $con;
 		$xQry = "DELETE FROM m_item WHERE itemno= $no";
-		$result = mysql_query ( $xQry );
+		$result = mysqli_query ( $con, $xQry );
 		if (! $result) {
 			die ( 'This Item is Referring to Some Where Else' );
 		}
@@ -31,31 +32,34 @@ function fn_DataClear() {
 	$GLOBALS ['xAmount'] ='';
 }
 function GetMaxIdNo() {
+	global $con;
 	$sql = "SELECT  CASE WHEN max(itemno)IS NULL OR max(itemno)= '' 
    THEN '1' 
    ELSE max(itemno)+1 END AS itemno
 FROM m_item";
-	$result = mysql_query ( $sql ) or die ( mysql_error () );
-	while ( $row = mysql_fetch_array ( $result ) ) {
+	$result = mysqli_query ( $con, $sql ) or die ( mysqli_error ( $con ) );
+	while ( $row = mysqli_fetch_array ( $result ) ) {
 		$GLOBALS ['xItemNo'] = $row ['itemno'];
 
 	}
 }
 function GetMaxStockEntry() {
+	global $con;
 	$sql = "SELECT  CASE WHEN max(stockno)IS NULL OR max(stockno)= ''
    THEN '1'
    ELSE max(stockno)+1 END AS stockno
 FROM inv_stockentry";
-	$result = mysql_query ( $sql ) or die ( mysql_error () );
-	while ( $row = mysql_fetch_array ( $result ) ) {
+	$result = mysqli_query ( $con, $sql ) or die ( mysqli_error ( $con ) );
+	while ( $row = mysqli_fetch_array ( $result ) ) {
 		$GLOBALS ['xStockNo'] = $row ['stockno'];
 	}
 }
 function DataFetch($xItemNo) {
-	$result = mysql_query ( "SELECT *  FROM m_item where itemno=$xItemNo" ) or die ( mysql_error () );
-	$count = mysql_num_rows ( $result );
+	global $con;
+	$result = mysqli_query ( $con, "SELECT *  FROM m_item where itemno=$xItemNo" ) or die ( mysqli_error ( $con ) );
+	$count = mysqli_num_rows ( $result );
 	if ($count > 0) {
-		while ( $row = mysql_fetch_array ( $result ) ) {
+		while ( $row = mysqli_fetch_array ( $result ) ) {
 			
 			$GLOBALS ['xItemNo'] = $row ['itemno'];
 			$GLOBALS ['xItemName'] = $row ['itemname'];
@@ -64,6 +68,7 @@ function DataFetch($xItemNo) {
 	}
 }
 function DataProcess($mode) {
+	global $con;
 	$xItemNo = $_POST ['f_itemno'];
 	$xItemName = strtoupper ( $_POST ['f_itemname'] );
 	$xAmount = $_POST ['f_amount'];
@@ -72,24 +77,23 @@ function DataProcess($mode) {
 	if ($mode == 'S') {
 		$xQry = "INSERT INTO m_item  VALUES ($xItemNo,
 		'$xItemName',$xAmount)";
-		$retval = mysql_query ( $xQry ) or die ( mysql_error () );
+		$retval = mysqli_query ( $con, $xQry ) or die ( mysqli_error ( $con ) );
 		if (! $retval) {
-			die ( 'Could not enter data: ' . mysql_error () );
+			die ( 'Could not enter data: ' . mysqli_error ( $con ) );
 		}
 		
 	} elseif ($mode == 'U') {
 		$xQry = "UPDATE m_item   SET itemname='$xItemName',itemamount=$xAmount WHERE itemno=$xItemNo";
 		$xMsg = "Updated";
 		header ( 'Location: inv_hm005item.php' );
-		$retval = mysql_query ( $xQry ) or die ( mysql_error () );
+		$retval = mysqli_query ( $con, $xQry ) or die ( mysqli_error ( $con ) );
 		if (! $retval) {
-			die ( 'Could not enter data: ' . mysql_error () );
+			die ( 'Could not enter data: ' . mysqli_error ( $con ) );
 		}
 	}
 	
 	GetMaxIdNo ();
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -188,8 +192,9 @@ if (xAmount== null || xAmount== "")
 $xQry='';
 $xSlNo=0;
 $xQry="SELECT *  from m_item where itemname!='' ORDER BY itemname;";
-$result2=mysql_query($xQry);
-$rowCount = mysql_num_rows($result2);
+global $con;
+$result2=mysqli_query($con, $xQry);
+$rowCount = mysqli_num_rows($result2);
 echo '</br>'; 
 ?>
 <table class="table table-striped  table-bordered "  border="1">
@@ -210,7 +215,7 @@ echo '</br>';
 
       <tbody class="searchable">
 <?php
-while ($row = mysql_fetch_array($result2)) {
+while ($row = mysqli_fetch_array($result2)) {
     $xSlNo+=1;
 
    ?>
@@ -239,7 +244,6 @@ echo '</tr>';
 </tbody>
     </table>	
   </div><!-- /container -->
-</div>
 </div>
 </div>
 <!--             ----------------------- REPORT ENDS HERE  ------------------------  !-->

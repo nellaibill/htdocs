@@ -9,8 +9,9 @@ if (isset ( $_GET ['salesinvoiceno'] ) && ! empty ( $_GET ['salesinvoiceno'] )) 
 		$GLOBALS ['xMode'] = 'F';
 		DataFetch ( $_GET ['salesinvoiceno'] );
 	} else {
+		global $con;
 		$xQry = "DELETE FROM inv_sales WHERE salesinvoiceno= $no";
-		mysql_query ( $xQry ) or die ( mysql_error () );
+		mysqli_query ( $con, $xQry ) or die ( mysqli_error ( $con ) );
 		header ( 'Location: inv_hr004salesentry.php' );
 	}
 } elseif (isset ( $_POST ['save'] )) {
@@ -35,22 +36,24 @@ function fn_DataClear() {
 	GetMaxIdNo ();
 }
 function GetMaxIdNo() {
+	global $con;
 	$xQry = "SELECT  CASE WHEN max(salesinvoiceno)IS NULL OR max(salesinvoiceno)= '' 
    THEN '1' 
    ELSE max(salesinvoiceno)+1 END AS salesinvoiceno
 FROM inv_sales";
 	
-	$result = mysql_query ( $xQry ) or die ( mysql_error () );
-	while ( $row = mysql_fetch_array ( $result ) ) {
+	$result = mysqli_query ( $con, $xQry ) or die ( mysqli_error ( $con ) );
+	while ( $row = mysqli_fetch_array ( $result ) ) {
 		$GLOBALS ['xSalesInvoiceNo'] = $row ['salesinvoiceno'];
 	}
 }
 function DataFetch($xSalesInvoiceNo) {
+	global $con;
 	$xQry = "SELECT *  FROM inv_sales where salesinvoiceno=$xSalesInvoiceNo";
-	$result = mysql_query ( $xQry ) or die ( mysql_error () );
-	$count = mysql_num_rows ( $result );
+	$result = mysqli_query ( $con, $xQry ) or die ( mysqli_error ( $con ) );
+	$count = mysqli_num_rows ( $result );
 	if ($count > 0) {
-		while ( $row = mysql_fetch_array ( $result ) ) {
+		while ( $row = mysqli_fetch_array ( $result ) ) {
 			$GLOBALS ['xSalesInvoiceNo'] = $row ['salesinvoiceno'];
 			$GLOBALS ['xUnitRate'] = $row ['unitrate'];
 			$GLOBALS ['xQty'] = $row ['qty'];
@@ -66,8 +69,8 @@ function DataFetch($xSalesInvoiceNo) {
 		}
 	}
 }
-
 function DataProcess($mode) {
+	global $con;
 
 	$xSalesInvoiceNo = $_POST ['f_salesinvoiceno'];
 	$xDate = $_POST ['f_date'];
@@ -98,7 +101,8 @@ function DataProcess($mode) {
 		print_bill_no='$xPrintBillNo'
 		 WHERE salesinvoiceno=$xSalesInvoiceNo";
 	}
-	$retval = mysql_query ( $xQry ) or die ( mysql_error () );
+	global $con;
+	$retval = mysqli_query ( $con, $xQry ) or die ( mysqli_error ( $con ) );
 	GetMaxIdNo ();
 }
 ?>
@@ -230,8 +234,9 @@ function calculatetotalamount() {
 						name="f_customerno">
 						<option value="0">Choose Customer</option>
 <?php
-$result = mysql_query ( "SELECT *  FROM inv_customer as i order by i.customerno" );
-while ( $row = mysql_fetch_array ( $result ) ) {
+global $con;
+$result = mysqli_query ( $con, "SELECT *  FROM inv_customer as i order by i.customerno" );
+while ( $row = mysqli_fetch_array ( $result ) ) {
 	?>
 <option value="<?php echo $row['customerno']; ?>"
 							<?php
@@ -257,8 +262,9 @@ while ( $row = mysql_fetch_array ( $result ) ) {
 						name="f_itemname" id="f_itemname" onclick="loaditemamount()" onblur="loaditemamount()">
 						<option value="0">Choose Item</option>
 <?php
-$result = mysql_query ( "SELECT *  FROM m_item as i order by i.itemname" );
-while ( $row = mysql_fetch_array ( $result ) ) {
+global $con;
+$result = mysqli_query ( $con, "SELECT *  FROM m_item as i order by i.itemname" );
+while ( $row = mysqli_fetch_array ( $result ) ) {
 	?>
 <option value="<?php echo $row['itemname']; ?>"
 							<?php
