@@ -1,0 +1,25 @@
+#department1 { border:2px solid #000; background: url(../images/dept.jpg); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+#employee { border:2px solid #000; background: url(../images/employee.jpg); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+#attendence { border:2px solid #000; background: url(../images/attendence.jpg); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+
+#pf { border:2px solid #000; background: url(../images/pf.png); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+
+
+#esi{ border:2px solid #000; background: url(../images/esi.jpg); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+
+
+#salary { border:2px solid #000; background: url(../images/salary.jpg); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+#cash { border:2px solid #000; background: url(../images/cash.jpg); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+#cheque { border:2px solid #000; background: url(../images/cheque.jpg); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+
+#footer {
+	clear: both;
+	background: #033;
+	height: 40px;
+	width: 100%;
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	text-align: center;
+	box-shadow:0px -1px 10px 1px #000;
+}

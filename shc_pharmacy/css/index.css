@@ -1,0 +1,52 @@
+html { font-family: "Courier New", Courier, monospace; color: #033; height:100%; margin:0; padding:0; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; }
+body { margin:0; font-size:16px; height:100%; margin:0; padding:0; background:url(../images/bgimg.jpg) no-repeat center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+#container { height:80px; width: auto; margin:0 auto; }
+#header { box-shadow: -1px 5px 5px -2px #333333;  position:fixed; width:100%; height:70px; border-radius:0px 0px 15px 15px; background-color:#FFF; }
+#top_info { float:left; width:40px; height:40px; background: #FFF; margin:10px; border: 1px solid #CCC; }
+#navbar { height:100px; clear:both; width:50%; margin:0 auto; margin-left:auto; margin-right:auto; }
+#navbar ul { margin:0; padding:0; list-style-type:none; }
+#navbar ul li { padding:50px; float:left; width:0 auto; }
+#navbar ul li a { font-size:12px; padding:0px 30px 0px 0px; }
+
+
+
+#config{ border:2px solid #000; background: url(../images/config.png); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+#item{ border:2px solid #000; background: url(../images/item.jpg); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+#product{ border:2px solid #000; background: url(../images/products.png); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+#setup{ border:2px solid #000; background: url(../images/setup.png); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+
+#category{ border:2px solid #000; background: url(../images/category.jpg); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+#group{ border:2px solid #000; background: url(../images/group1.png); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+
+
+#purchase { border:2px solid #000; background: url(../images/purchase.jpg); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+#sales { border:2px solid #000; background: url(../images/sales.png); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+#dc{ border:2px solid #000; background: url(../images/dc1.png); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+
+#customer { border:2px solid #000; background: url(../images/customer.png); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+#supplier { border:2px solid #000; background: url(../images/supplier.png); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+#salesreport{ border:2px solid #000; background: url(../images/salesreport.png); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+#purchasereport{ border:2px solid #000; background: url(../images/purchase_report.png); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+
+#amc { border:2px solid #000; background: url(../images/amc.png); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+#reminder { border:2px solid #000; background: url(../images/reminder1.jpg); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+#stocks{ border:2px solid #000; background: url(../images/stocks.png); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+
+#servicebill{ border:2px solid #000; background: url(../images/servicebill.jpg); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+
+#claim{ border:2px solid #000; background: url(../images/claim.jpg); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+#logout{ border:2px solid #000; background: url(../images/logout.png); background-color:#FFF; background-repeat:no-repeat; background-position:center; border-radius:20px; height:120px; width:250px; color: #333; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+
+#footer {
+	clear: both;
+	background: navy;
+	height: 20px;
+	width: 100%;
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	text-align: center;
+	box-shadow:0px -1px 10px 1px #000;
+}
+
+
