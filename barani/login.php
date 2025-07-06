@@ -1,4 +1,3 @@
-
 <?php
 include('config.php');
 session_start(); // Starting Session
@@ -16,11 +15,11 @@ else
   $xLoginDepartment=$_POST['f_logindepartment'];
   $username = stripslashes($username);
   $password = stripslashes($password);
-  $username = mysql_real_escape_string($username);
-  $password = mysql_real_escape_string($password);
+  $username = mysqli_real_escape_string($con, $username);
+  $password = mysqli_real_escape_string($con, $password);
   
-  $xQry= mysql_query("select * from m_login where username='$username' and password='$password' " , $con);
-  $rows = mysql_num_rows($xQry);
+  $xQry= mysqli_query($con, "select * from m_login where username='$username' and password='$password' " );
+  $rows = mysqli_num_rows($xQry);
   if ($rows == 1) 
   {
     $_SESSION['login_user']=strtolower($username);
@@ -32,7 +31,7 @@ else
         header("location: homepage.php");
       }
 
-    mysql_close($con); // Closing Connection
+    mysqli_close($con); // Closing Connection
    }
    else
     {

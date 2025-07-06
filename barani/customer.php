@@ -3,13 +3,14 @@ include 'globalfile.php';
 fn_DataClear ();
 
 if (isset ( $_GET ['customerno'] ) && ! empty ( $_GET ['customerno'] )) {
+	global $con;
 	$no = $_GET ['customerno'];
 	if ($_GET ['xmode'] == 'edit') {
 		$GLOBALS ['xMode'] = 'F';
 		DataFetch ( $_GET ['customerno'] );
 	} else {
 		$xQry = "DELETE FROM inv_customer WHERE customerno= $no";
-		mysql_query ( $xQry ) or die ( mysql_error () );
+		mysqli_query ( $con, $xQry ) or die ( mysqli_error ( $con ) );
 		echo '<script type="text/javascript">swal("Good job!", "Deleted!", "success");</script>';
 		header ( 'Location: customer.php' );
 	}
@@ -30,18 +31,20 @@ function fn_DataClear() {
 	$GLOBALS ['xGstNo']='';
 }
 function fn_GetMaxIdNo() {
+	global $con;
 	$xQry = "SELECT  CASE WHEN max(customerno)IS NULL OR max(customerno)= '' THEN '1' ELSE max(customerno)+1 END AS customerno FROM inv_customer";
-	$result = mysql_query ( $xQry ) or die ( mysql_error () );
-	while ( $row = mysql_fetch_array ( $result ) ) {
+	$result = mysqli_query ( $con, $xQry ) or die ( mysqli_error ( $con ) );
+	while ( $row = mysqli_fetch_array ( $result ) ) {
 		$GLOBALS ['xCustomerid'] = $row ['customerno'];
 		$GLOBALS ['xMobileNo'] = 0;
 	}
 }
 function DataFetch($xCustomerid) {
-	$result = mysql_query ( "SELECT *  FROM inv_customer where customerno=$xCustomerid" ) or die ( mysql_error () );
-	$count = mysql_num_rows ( $result );
+	global $con;
+	$result = mysqli_query ( $con, "SELECT *  FROM inv_customer where customerno=$xCustomerid" ) or die ( mysqli_error ( $con ) );
+	$count = mysqli_num_rows ( $result );
 	if ($count > 0) {
-		while ( $row = mysql_fetch_array ( $result ) ) {
+		while ( $row = mysqli_fetch_array ( $result ) ) {
 			$GLOBALS ['xCustomerid'] = $row ['customerno'];
 			$GLOBALS ['xCustomerName'] = $row ['customername'];
 			$GLOBALS ['xCustomerAddress'] = $row ['customeraddress'];
@@ -52,6 +55,7 @@ function DataFetch($xCustomerid) {
 	}
 }
 function DataProcess($mode) {
+	global $con;
 	$xCustomerid = $_POST ['f_customerno'];
 	$xCustomerName = strtoupper ( $_POST ['f_customername'] );
 	$xCustomerAddress = $_POST ['f_customeraddress'];
@@ -76,7 +80,8 @@ function DataProcess($mode) {
 		 customeremail='$xCustomerEmail',customergstno='$xCustomerGstNo'
 		 WHERE customerno=$xCustomerid";
 	}
-	$retval = mysql_query ( $xQry ) or die ( mysql_error () );
+	global $con;
+	$retval = mysqli_query ( $con, $xQry ) or die ( mysqli_error ( $con ) );
 	fn_GetMaxIdNo ();
 }
 
@@ -206,11 +211,12 @@ function DataProcess($mode) {
 $xQry = '';
 $xSlNo = 0;
 $xQry = "SELECT *  from inv_customer  order by  customername";
-$result2 = mysql_query ( $xQry );
-$rowCount = mysql_num_rows ( $result2 );
+global $con;
+$result2 = mysqli_query ( $con, $xQry );
+$rowCount = mysqli_num_rows ( $result2 );
 echo '</br>';
 
-while ( $row = mysql_fetch_array ( $result2 ) ) {
+while ( $row = mysqli_fetch_array ( $result2 ) ) {
 	$xSlNo += 1;
 	echo '<td>' . $xSlNo . '</td>';
 	echo '<td>' . $row ['customername'] . '</td>';
@@ -260,4 +266,3 @@ while ( $row = mysql_fetch_array ( $result2 ) ) {
 	    }
 	});
 	</script>
-	

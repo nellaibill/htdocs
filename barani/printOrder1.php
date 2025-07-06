@@ -130,8 +130,8 @@ function SendMail($xEmailId, $xMessage) {
 
 $xSalesInvoiceNo = $_GET ['salesinvoiceno'];
 $xSalesInvoiceNoForPrint=0;
-$result = mysql_query ( "SELECT *  FROM inv_sales WHERE salesinvoiceno=".$xSalesInvoiceNo ) or die ( mysql_error () );
-if ($row = mysql_fetch_array ( $result )) {
+$result = mysqli_query ( $con, "SELECT *  FROM inv_sales WHERE salesinvoiceno=".$xSalesInvoiceNo ) or die ( mysqli_error ( $con ) );
+if ($row = mysqli_fetch_array ( $result )) {
 
 	$xDate = $row ['date'];
 	$xItemName = $row ['itemname'];
@@ -314,4 +314,3 @@ echo $table;
 /* Ended */
 
 ?>
-	
