@@ -4,32 +4,26 @@ date_default_timezone_set('Asia/Calcutta');
 
 $xCurrentDate= date('Y-m-d');
 $xBackupQry ="SELECT *  FROM backup where date='$xCurrentDate'";
-	$result = mysql_query ( $xBackupQry) or die ( mysql_error () );
-	$count = mysql_num_rows ( $result );
+	$result = mysqli_query ( $con, $xBackupQry) or die ( mysqli_error ( $con ) );
+	$count = mysqli_num_rows ( $result );
 	if ($count == 0) {
 		$xQry = "INSERT INTO backup(date)  VALUES('$xCurrentDate')";
-		$retval = mysql_query ( $xQry ) or die ( mysql_error ());
-		
+		$retval = mysqli_query ( $con, $xQry ) or die ( mysqli_error ($con));
 		$GLOBALS ['xDate']=date('Y-m-d-H-i-s');
-		backup_tables('localhost','root','','stlukes');
+		backup_tables('localhost','root','','stlukes', $con);
 	}
 
-
-
-
 /* backup the db OR just a table */
-function backup_tables($host,$user,$pass,$name,$tables = '*')
+function backup_tables($host,$user,$pass,$name,$con,$tables = '*')
 {
-	
-	$link = mysql_connect($host,$user,$pass);
-	mysql_select_db($name,$link);
-	
+	// Use mysqli for connection
+	//$link = mysqli_connect($host,$user,$pass,$name);
 	//get all of the tables
 	if($tables == '*')
 	{
 		$tables = array();
-		$result = mysql_query('SHOW TABLES');
-		while($row = mysql_fetch_row($result))
+		$result = mysqli_query($con, 'SHOW TABLES');
+		while($row = mysqli_fetch_row($result))
 		{
 			$tables[] = $row[0];
 		}
@@ -38,39 +32,34 @@ function backup_tables($host,$user,$pass,$name,$tables = '*')
 	{
 		$tables = is_array($tables) ? $tables : explode(',',$tables);
 	}
-	
 	//cycle through
 	foreach($tables as $table)
 	{
-		$result = mysql_query('SELECT * FROM '.$table);
-		$num_fields = mysql_num_fields($result);
+		$result = mysqli_query($con, 'SELECT * FROM '.$table);
+		$num_fields = mysqli_num_fields($result);
 		$return='';
 		$return.= 'DROP TABLE '.$table.';';
-		$row2 = mysql_fetch_row(mysql_query('SHOW CREATE TABLE '.$table));
+		$row2 = mysqli_fetch_row(mysqli_query($con, 'SHOW CREATE TABLE '.$table));
 		$return.= "\n\n".$row2[1].";\n\n";
-		
 		for ($i = 0; $i < $num_fields; $i++) 
 		{
-			while($row = mysql_fetch_row($result))
+			while($row = mysqli_fetch_row($result))
 			{
 				$return.= 'INSERT INTO '.$table.' VALUES(';
 				for($j=0; $j < $num_fields; $j++) 
 				{
 					$row[$j] = addslashes($row[$j]);
-					$row[$j] = ereg_replace("\n","\\n",$row[$j]);
+					$row[$j] = preg_replace("/\n/","\\n",$row[$j]);
 					if (isset($row[$j])) { $return.= '"'.$row[$j].'"' ; } else { $return.= '""'; }
 					if ($j < ($num_fields-1)) { $return.= ','; }
 				}
 				$return.= ");\n";
 			}
 		}
-		$return.="\n\n\n";
+		$return."\n\n\n";
 	}
-	
 	//save file
-
 	$handle = fopen('./backup/stlukes-'.$GLOBALS ['xDate'].'.sql','w+');
-	//$handle = fopen('./backup/DAYBOOK-BACKUP-'.$GLOBALS ['xDate'].'.sql','w+');
 	fwrite($handle,$return);
 	fclose($handle);
 }

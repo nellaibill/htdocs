@@ -46,17 +46,19 @@ function fn_DataClear() {
 	fn_GetMaxIdNo ();
 }
 function fn_GetMaxIdNo() {
+	global $con;
 	$xQry = "SELECT  CASE WHEN max(id)IS NULL OR max(id)= '' THEN '1' ELSE max(id)+1 END AS id FROM patient_data";
-	$result = mysql_query ( $xQry ) or die ( mysql_error () );
-	while ( $row = mysql_fetch_array ( $result ) ) {
+	$result = mysqli_query ( $con, $xQry ) or die ( mysqli_error ( $con ) );
+	while ( $row = mysqli_fetch_array ( $result ) ) {
 		$GLOBALS ['xId'] = $row ['id'];
 	}
 }
 function DataFetch($xId) {
-	$result = mysql_query ( "SELECT *  FROM patient_data where id=$xId" ) or die ( mysql_error () );
-	$count = mysql_num_rows ( $result );
+	global $con;
+	$result = mysqli_query ( $con, "SELECT *  FROM patient_data where id=$xId" ) or die ( mysqli_error ( $con ) );
+	$count = mysqli_num_rows ( $result );
 	if ($count > 0) {
-		while ( $row = mysql_fetch_array ( $result ) ) {
+		while ( $row = mysqli_fetch_array ( $result ) ) {
 			$GLOBALS ['xId'] = $row ['id'];
 			$GLOBALS ['xPatientName'] = $row ['patient_name'];
 			$GLOBALS ['xRelationWith'] = $row ['relation_with'];

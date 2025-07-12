@@ -1,5 +1,5 @@
-
 <?php
+include 'globalfile.php';
 // include connection file
 include_once ("connection.php");
 
@@ -87,4 +87,3 @@ $json_data = array (
 
 echo json_encode ( $json_data ); // send data as json format
 ?>
-	

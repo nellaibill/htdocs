@@ -1,3 +1,4 @@
+
 <style>
 /* CSSTerm.com CSS Horizontal menu with images */
 
@@ -6,11 +7,6 @@
 	overflow:hidden;
 }
 
-.two_line_menu {
-    position: relative;
-    margin-bottom: 40px;
-    background:#77f url('img_bg.gif') repeat-x;
-}
 
 .two_line_menu a {
     display: block;
@@ -45,14 +41,7 @@
 		padding: 0;
 		font-family: 'Oswald', sans-serif;
 	}
-	
-	body {
-	    background: url(../images/colosseum.jpg) no-repeat center center fixed; 
-	    -webkit-background-size: cover;
-	    -moz-background-size: cover;
-	    -o-background-size: cover;
-	    background-size: cover;
-	}
+
 	
 	.slideout-menu {
 		position: fixed;

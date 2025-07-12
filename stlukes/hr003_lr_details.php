@@ -41,13 +41,13 @@ $xQry = '';
 $xSlNo = 0;
 $xQry = "SELECT *  from patient_data  order by id";
 $xQry = "SELECT * from patient_data WHERE lr_no != '' " ;
-$result2 = mysql_query ( $xQry );
-$rowCount = mysql_num_rows ( $result2 );
+$result2 = mysqli_query($con, $xQry);
+$rowCount = mysqli_num_rows($result2);
 echo '</br>';
 
-while ( $row = mysql_fetch_array ( $result2 ) ) {
-	
-	echo '<td>' . $xSlNo += 1 . '</td>';
+while ( $row = mysqli_fetch_array ( $result2 ) ) {
+    $xSlNo++;
+    echo '<td>' . $xSlNo . '</td>';
 
 	?>
 		<td><a href="index.php<?php echo '?id='.$row['id']  . '&xmode=edit'; ?>" ><?php echo  $row ['id']; ?></a></td>

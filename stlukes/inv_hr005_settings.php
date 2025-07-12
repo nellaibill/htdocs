@@ -104,12 +104,12 @@ if ($xItemNo != 0) {
 }
 
 $xQry = "SELECT p.supplierno as supplierno, sum(p.total)as total  from inv_purchaseentry as p ,inv_supplier as s where p.daterecieved >= '$xFromDate' and p.daterecieved <= '$xToDate' and p.supplierno=s.supplierid $xQryFilter  group by p.supplierno order by s.suppliername";
-$result2 = mysql_query ( $xQry );
-$rowCount = mysql_num_rows ( $result2 );
+$result2 = mysqli_query($con, $xQry);
+$rowCount = mysqli_num_rows($result2);
 
-if (mysql_num_rows ( $result2 )) {
+if (mysqli_num_rows($result2)) {
 	$xGrandTotal = 0;
-	while ( $row = mysql_fetch_array ( $result2 ) ) {
+	while ( $row = mysqli_fetch_array ( $result2 ) ) {
 		$xSlNo += 1;
 		findsuppliername ( $row ['supplierno'] );
 		?>

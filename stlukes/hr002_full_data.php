@@ -67,9 +67,11 @@ $(document).ready(function() {
 <?php
 $xQry = "SELECT *  
 from patient_data";
-$result2 = mysql_query ( $xQry );
-$rowCount = mysql_num_rows ( $result2 );
-while ( $row = mysql_fetch_array ( $result2 ) ) {
+$result2 = mysqli_query($con, $xQry);
+$rowCount = mysqli_num_rows($result2);
+$xSlNo = 0;
+while ( $row = mysqli_fetch_array ( $result2 ) ) {
+	$xSlNo++;
 	?>
 	<tr>
 	<td><a href="index.php<?php echo '?id='.$row['id']  . '&xmode=edit'; ?>"><?php echo  $row ['id']; ?></a></td>
